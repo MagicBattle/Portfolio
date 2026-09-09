@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Michael Yeung · Unova</title>
+<meta name="description" content="Michael Yeung's portfolio: travel across a floating Unova diorama and battle through ten projects, one per town.">
+<meta name="theme-color" content="#05060f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e8e8e8' stroke='%23111' stroke-width='3'/%3E%3Cpath d='M2 16a14 14 0 0 1 28 0z' fill='%23e3350d'/%3E%3Cpath d='M2 16h28' stroke='%23111' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='4.5' fill='%23fff' stroke='%23111' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/",
+    "gifuct-js": "https://cdn.jsdelivr.net/npm/gifuct-js@2.1.2/+esm"
+  }
+}
+</script>
+</head>
+<body>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<div id="loader" class="loader" aria-live="polite">
+  <div class="loader-ball"></div>
+  <p>Loading Unova<span class="dots"></span></p>
+</div>
+
+<header class="chrome chrome-tl">
+  <p class="eyebrow">CS student @ UC Davis</p>
+  <h1 class="name">Michael Yeung</h1>
+</header>
+
+<nav class="chrome chrome-tr" aria-label="Links">
+  <a class="chip" href="https://github.com/MagicBattle" target="_blank" rel="noopener">GitHub</a>
+  <a class="chip" href="mailto:michaelyeung145@gmail.com">Contact</a>
+  <button id="sound" class="chip" type="button" aria-pressed="false">Sound off</button>
+</nav>
+
+<section id="hero" class="hero">
+  <p class="hero-kicker">Welcome to the world of</p>
+  <h2 class="hero-title">Projects</h2>
+  <p class="hero-sub">Ten towns. Ten builds. Travel the region and collect them all.</p>
+</section>
+
+<aside id="card" class="trainer-card" aria-label="Trainer card">
+  <div class="tc-head">
+    <span class="tc-title">TRAINER CARD</span>
+    <span id="tc-clock" class="tc-clock">—</span>
+  </div>
+  <div class="tc-body">
+    <div class="tc-row"><span class="tc-label">NAME</span><span class="tc-val">MICHAEL</span></div>
+    <div class="tc-row"><span class="tc-label">REGION</span><span class="tc-val">UNOVA</span></div>
+    <div class="tc-row"><span class="tc-label">BADGES</span><span class="tc-val"><b id="tc-count">0</b>/10</span></div>
+  </div>
+  <ol id="badges" class="badges" aria-label="Badges"></ol>
+</aside>
+
+<div id="hint" class="hint"><span class="hint-arrow">⌄</span> scroll or press W to travel</div>
+
+<div id="stop-label" class="stop-label" aria-live="polite"></div>
+
+<!-- gym battle intro -->
+<div id="battle" class="battle" hidden>
+  <div class="vs-wipe"><span class="vs-a"></span><span class="vs-b"></span><span class="vs-txt">VS</span></div>
+  <div class="battle-stage">
+    <div class="battle-ring"></div>
+    <img id="battle-sprite" class="battle-sprite" alt="" decoding="async">
+    <div class="battle-plate">
+      <span id="battle-mon" class="plate-name">—</span>
+      <span class="plate-lv">Lv.<b id="battle-lv">1</b></span>
+      <div class="hp"><span class="hp-tag">HP</span><span class="hp-bar"><i></i></span></div>
+    </div>
+  </div>
+  <div class="dialog">
+    <div class="dialog-text"><p id="dialog-line"></p></div>
+    <div class="moves" role="group" aria-label="Actions">
+      <a id="mv-demo" class="move" href="#" target="_blank" rel="noopener">DEMO</a>
+      <a id="mv-code" class="move" href="#" target="_blank" rel="noopener">CODE</a>
+      <button id="mv-prev" class="move" type="button">PREV</button>
+      <button id="mv-next" class="move" type="button">NEXT</button>
+    </div>
+  </div>
+</div>
+
+<!-- Pokémon League: contact -->
+<section id="league" class="league" hidden>
+  <p class="league-kicker">HALL OF FAME</p>
+  <h2 class="league-title">You beat the region.</h2>
+  <p class="league-sub">Ten projects down. Now let's build the next one together.</p>
+  <div class="league-links">
+    <a class="move big" href="mailto:michaelyeung145@gmail.com">EMAIL</a>
+    <a class="move big" href="https://github.com/MagicBattle" target="_blank" rel="noopener">GITHUB</a>
+    <button id="restart" class="move big" type="button">FLY HOME</button>
+  </div>
+</section>
+
+<footer class="credit">sprites &amp; music are Nintendo's, this is fan work</footer>
+
+<nav class="sr-only" aria-label="Project links">
+  <a href="https://pocket-epto7uuu0-rata3.vercel.app/">PokeVault</a>
+  <a href="https://magicbattle.github.io/SAC-HACKS-VII/">SignFlow</a>
+  <a href="https://magicbattle.github.io/ECS-163-Project/">The Commute Tax</a>
+  <a href="https://github.com/MagicBattle/Graveyard-Shift">Graveyard Shift</a>
+  <a href="https://magicbattle.github.io/HackDavis25/">Swimly</a>
+  <a href="https://magicbattle.github.io/hackDavis2026/">FlipIt</a>
+  <a href="https://magicbattle.github.io/sacHacks/">Green Checker</a>
+  <a href="https://magicbattle.github.io/RecipeGenerator/">Recipe Generator</a>
+  <a href="https://magicbattle.github.io/rock-paper-scissors/">Rock Paper Scissors</a>
+  <a href="https://magicbattle.github.io/Landing-page/">Watch Landing Page</a>
+  <a href="https://github.com/MagicBattle">GitHub</a>
+</nav>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
