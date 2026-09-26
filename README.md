@@ -6,14 +6,6 @@ Plain HTML, CSS, and JavaScript. No build step.
 
 **Live:** https://magicbattle.github.io/Portfolio/
 
-## Run locally
-
-```bash
-python3 -m http.server 8321
-```
-
-Then open http://localhost:8321. It has to be served over HTTP rather than opened as a file because the site uses ES modules.
-
 ## Edit the projects
 
 Everything about the towns and projects is in `js/data.js`. The rest:
