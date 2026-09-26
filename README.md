@@ -1,8 +1,10 @@
-# Unova Diorama
+# Portfolio
 
-My portfolio as a floating, low-poly Unova region built in Three.js. Scroll to fly the camera across the island; every town is a project, presented as a Pokémon Black/White gym-battle intro with an animated Gen 5 sprite. Ten stops, ten badges, and the Pokémon League is the contact page.
+My portfolio as a 3D Pokémon Unova region built with Three.js. Each town is a project, shown as a Pokémon Black/White gym battle intro. Fly from town to town with the scroll wheel or arrow keys, and beat the Pokémon League to reach the contact page.
 
-**Live:** GitHub Pages (static, no build step).
+Plain HTML, CSS, and JavaScript. No build step.
+
+**Live:** https://magicbattle.github.io/Portfolio/
 
 ## Run locally
 
@@ -10,18 +12,19 @@ My portfolio as a floating, low-poly Unova region built in Three.js. Scroll to f
 python3 -m http.server 8321
 ```
 
-Then open http://localhost:8321. Any static server works; the site needs to be served over HTTP (not `file://`) because it uses ES modules.
+Then open http://localhost:8321. It has to be served over HTTP rather than opened as a file because the site uses ES modules.
 
-## How it works
+## Edit the projects
 
-- `js/region.js` builds the whole island from primitives: coastline, bay, routes, instanced trees, towns, Skyarrow Bridge, the Nimbasa Ferris wheel, the Driftveil drawbridge, Chargestone crystals, Mistralton's circling plane, Dragonspiral Tower, Opelucid, and the League.
-- `js/main.js` runs the scene: bloom post-processing, a Catmull-Rom camera rail driven by scroll, fireflies, stars, and the Pokémon billboards.
-- `js/gif.js` decodes the official animated GIF sprites into crisp nearest-neighbour textures.
-- `js/audio.js` streams Black/White town themes from archive.org with crossfades and a chiptune fallback.
-- `js/data.js` is the only file you edit to change projects, towns, or Pokémon.
+Everything about the towns and projects is in `js/data.js`. The rest:
 
-Time of day and season follow the visitor's clock, using the Gen 5 rule (the season advances every real month). Override for testing with query params: `?time=morning|day|evening|night&season=spring|summer|autumn|winter`. Add `&debug=1` to keep rendering in a hidden tab.
+- `js/region.js`: builds the island and towns
+- `js/main.js`: camera, lighting, and the gym battle screens
+- `js/audio.js`: town music
+- `css/style.css`: the UI
+
+Test a time of day or season with `?time=night&season=winter` in the URL.
 
 ## Credits
 
-Sprites and music are Nintendo / Game Freak / The Pokémon Company. Sprites come from the [PokeAPI sprite repo](https://github.com/PokeAPI/sprites), music from archive.org. This is fan work.
+Sprites and music belong to Nintendo, Game Freak, and The Pokémon Company. Sprites come from the [PokeAPI sprite repo](https://github.com/PokeAPI/sprites), music from archive.org. This is fan work.
